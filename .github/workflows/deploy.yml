@@ -1,4 +1,4 @@
-name: Deploy - ${{ inputs.environment }}
+name: Deploy - ${{ input.environment }}
 
 on:
   workflow_call:

@@ -1,4 +1,4 @@
-name: Deploy - ${{ input.environment }}
+name: Deploy
 
 on:
   workflow_call:
@@ -10,9 +10,9 @@ on:
 
 jobs:
   deploy-job:
-    name: Deploy Job - ${{ input.environment }}
+    name: Deploy Job
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy step - ${{ input.environment }}
+      - name: Deploy step
         run: echo deploy to ${{ input.environment }} step executed.

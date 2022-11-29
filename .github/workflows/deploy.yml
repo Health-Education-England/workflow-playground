@@ -10,9 +10,9 @@ on:
 
 jobs:
   deploy-job:
-    name: Deploy Job
+    name: Deploy Job - ${{ inputs.environment }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy step
+      - name: Deploy step - ${{ inputs.environment }}
         run: echo deploy to ${{ inputs.environment }} step executed.

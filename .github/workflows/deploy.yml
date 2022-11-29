@@ -2,7 +2,7 @@ name: Deploy - ${{ inputs.environment }}
 
 on:
   workflow_call:
-    inputs:
+    input:
       environment:
         description: The target environment for the deployment.
         required: true

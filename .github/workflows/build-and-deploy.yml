@@ -16,11 +16,8 @@ jobs :
   deploy-prod:
     needs: deploy-preprod
     uses: ./.github/workflows/deploy.yml
+    strategy:
+      matrix:
+        environment: [prod, nimdta]
     with:
-      environment: prod
-
-  deploy-nimdta:
-    needs: deploy-preprod
-    uses: ./.github/workflows/deploy.yml
-    with:
-      environment: nimdta
+      environment: ${{ matrix.environment }}

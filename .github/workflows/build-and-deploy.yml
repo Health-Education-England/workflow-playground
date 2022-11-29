@@ -6,23 +6,23 @@ on:
       - main
 
 jobs :
-  call-build-workflow:
+  build:
     uses: ./.github/workflows/build.yml
 
-  call-deploy-env-1:
-    needs: call-build-workflow
+  deploy-preprod:
+    needs: build
     uses: ./.github/workflows/deploy.yml
     with:
       environment: preprod
 
-  call-deploy-env-2a:
-    needs: call-deploy-env-1
+  deploy-prod:
+    needs: deploy-preprod
     uses: ./.github/workflows/deploy.yml
     with:
-      environment: prod-a
+      environment: prod
 
-  call-deploy-env-2b:
-    needs: call-deploy-env-1
+  deploy-nimdta:
+    needs: deploy-preprod
     uses: ./.github/workflows/deploy.yml
     with:
-      environment: prod-b
+      environment: nimdta

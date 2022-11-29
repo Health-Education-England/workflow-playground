@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to ECS
 
 on:
   workflow_call:
@@ -9,10 +9,10 @@ on:
         type: string
 
 jobs:
-  deploy-job:
-    name: Deploy Job - ${{ inputs.environment }}
+  deploy:
+    name: Deploy ${{ inputs.environment }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy step - ${{ inputs.environment }}
+      - name: Deploy ${{ inputs.environment }}
         run: echo deploy to ${{ inputs.environment }} step executed.

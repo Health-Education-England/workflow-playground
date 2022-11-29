@@ -10,8 +10,13 @@ on:
         type: string
 
 jobs :
-  build:
-    uses: ./.github/workflows/build-${{ inputs.build-tool }}.yml
+  build-gradle:
+    if: ${{ inputs.build-tool }} == gradle
+    uses: ./.github/workflows/build-gradle.yml
+
+  build-maven:
+    if: ${{ inputs.build-tool }} == maven
+    uses: ./.github/workflows/build-maven.yml
 
   deploy-preprod:
     needs: build

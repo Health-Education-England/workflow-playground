@@ -5,22 +5,22 @@ on:
 
 jobs :
   build:
-    uses: ./.github/workflows/reusable/build.yml
+    uses: ./.github/workflows/build.yml
 
   deploy-preprod:
     needs: build
-    uses: ./.github/workflows/reusable/deploy.yml
+    uses: ./.github/workflows/deploy.yml
     with:
       environment: preprod
 
   deploy-prod:
     needs: deploy-preprod
-    uses: ./.github/workflows/reusable/deploy.yml
+    uses: ./.github/workflows/deploy.yml
     with:
       environment: prod
 
   deploy-nimdta:
     needs: deploy-preprod
-    uses: ./.github/workflows/reusable/deploy.yml
+    uses: ./.github/workflows/deploy.yml
     with:
       environment: nimdta

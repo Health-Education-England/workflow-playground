@@ -10,4 +10,5 @@ jobs :
     uses: ./.github/workflows/build.yml
 
   call-deploy-workflow:
+    needs: call-build-workflow
     uses: ./.github/workflows/deploy.yml

@@ -15,4 +15,4 @@ jobs:
 
     steps:
       - name: Deploy step
-        run: echo deploy to ${{ input.environment }} step executed.
+        run: echo deploy to ${{ inputs.environment }} step executed.

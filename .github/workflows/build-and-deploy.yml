@@ -12,11 +12,17 @@ jobs :
   call-deploy-env-1:
     needs: call-build-workflow
     uses: ./.github/workflows/deploy.yml
+    with:
+      environment: preprod
 
   call-deploy-env-2a:
     needs: call-deploy-env-1
     uses: ./.github/workflows/deploy.yml
+    with:
+      environment: prod-a
 
   call-deploy-env-2b:
     needs: call-deploy-env-1
     uses: ./.github/workflows/deploy.yml
+    with:
+      environment: prod-b

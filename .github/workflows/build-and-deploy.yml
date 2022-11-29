@@ -2,10 +2,16 @@ name: Build and Deploy
 
 on:
   workflow_call:
+    inputs:
+      build-tool:
+        description: the build tool to use
+        required: false
+        default: gradle
+        type: string
 
 jobs :
   build:
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/workflows/build-${{ inputs.build-tool }}.yml
 
   deploy-preprod:
     needs: build

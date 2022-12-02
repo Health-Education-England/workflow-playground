@@ -7,7 +7,7 @@ on:
         description: The target environment for the deployment.
         required: true
         type: string
-      name:
+      service_name:
         description: The target environment for the deployment.
         required: false
         default: ${{ github.event.repository.name }}
@@ -15,10 +15,10 @@ on:
 
 jobs:
   deploy:
-    name: Deploy ${{ inputs.environment }}
+    name: Deploy ${{ inputs.environment }} ${{ inputs.service_name }}
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
 
     steps:
-      - name: Deploy ${{ inputs.environment }}
-        run: echo deploy to ${{ inputs.environment }}, with name ${{ inputs.name }}.
+      - name: Deploy ${{ inputs.environment }} ${{ inputs.service_name }}
+        run: echo deploy to ${{ inputs.environment }}, with name ${{ inputs.service_name }}.

@@ -24,11 +24,11 @@ jobs :
     uses: ./.github/workflows/deploy.yml
     with:
       environment: preprod
-      name: test_override_name
+      service_name: test_override_name
 
   deploy-prod-b:
     needs: deploy-preprod-b
     uses: ./.github/workflows/deploy.yml
     with:
       environment: prod
-      name: test_override_name
+      service_name: test_override_name

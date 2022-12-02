@@ -2,33 +2,33 @@ name: Build and Deploy
 
 on:
   workflow_call:
-    inputs:
-      build-tool:
-        description: the build tool to use
-        required: false
-        default: gradle
-        type: string
 
 jobs :
-  build-gradle:
-    if: ${{ inputs.build-tool }} == gradle
+  build:
     uses: ./.github/workflows/build-gradle.yml
 
-  build-maven:
-    if: ${{ inputs.build-tool }} == maven
-    uses: ./.github/workflows/build-maven.yml
-
-  deploy-preprod:
+  deploy-preprod-a:
     needs: build
     uses: ./.github/workflows/deploy.yml
     with:
       environment: preprod
 
-  deploy-prod:
-    needs: deploy-preprod
+  deploy-prod-a:
+    needs: deploy-preprod-a
     uses: ./.github/workflows/deploy.yml
-    strategy:
-      matrix:
-        environment: [prod, nimdta]
     with:
-      environment: ${{ matrix.environment }}
+      environment: prod
+
+  deploy-preprod-b:
+    needs: build
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment: preprod
+      name: test_override_name
+
+  deploy-prod-b:
+    needs: deploy-preprod-b
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment: prod
+      name: test_override_name

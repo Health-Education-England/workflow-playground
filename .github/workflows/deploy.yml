@@ -7,6 +7,11 @@ on:
         description: The target environment for the deployment.
         required: true
         type: string
+      name:
+        description: The target environment for the deployment.
+        required: false
+        default: ${{ github.event.repository.name }}
+        type: string
 
 jobs:
   deploy:
@@ -16,4 +21,4 @@ jobs:
 
     steps:
       - name: Deploy ${{ inputs.environment }}
-        run: echo deploy to ${{ inputs.environment }} step executed.
+        run: echo deploy to ${{ inputs.environment }}, with name ${{ inputs.name }}.
